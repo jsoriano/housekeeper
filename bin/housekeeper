@@ -4,12 +4,10 @@
 
 import os
 import os.path
-import grp
 import signal
 import sys
 import daemon
 import daemon.pidlockfile
-import lockfile
 import threading
 import time
 import socket
@@ -182,7 +180,7 @@ class HousekeeperDaemon(daemon.DaemonContext):
         if os.path.exists(self.socketfile):
             os.unlink(self.socketfile)
         if os.path.exists(self.envfile):
-            os.unlink(Self.envfile)
+            os.unlink(self.envfile)
         super(HousekeeperDaemon, self).close()
 
     def main(self):
