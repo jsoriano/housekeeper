@@ -16,4 +16,4 @@ Features
 * Stored keys have an expiration time, by default they expire in 10 minutes
 * Can generate environment configuration easily sourceable from shell scripts
   or profile
-* Persist between sessions
+* It's kept alive between sessions
