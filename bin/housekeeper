@@ -84,11 +84,9 @@ class HousekeeperDaemon(daemon.DaemonContext):
         if not os.path.exists(self.directory):
             os.makedirs(self.directory)
 
-        env_content = "HOUSEKEEPER_SOCKET='%s'; export HOUSEKEEPER_SOCKET;" % self.socketfile
-        print env_content
+        self.env_content = "HOUSEKEEPER_SOCKET='%s'; export HOUSEKEEPER_SOCKET;" % self.socketfile
+        print self.env_content
         sys.stdout.flush()
-        if write_envfile:
-            open(self.envfile, 'w').write(env_content)     
 
         super(HousekeeperDaemon, self).__init__(
             working_directory = self.directory,
@@ -189,6 +187,11 @@ class HousekeeperDaemon(daemon.DaemonContext):
 
         if os.path.lexists(self.socketfile):
             os.unlink(self.socketfile)
+
+        if self.write_envfile:
+            env = open(self.envfile, 'w')
+            env.write(self.env_content)
+            env.close()
 
         self.socket = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
         umask = os.umask(0077)
