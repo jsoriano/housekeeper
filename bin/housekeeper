@@ -94,8 +94,6 @@ class HousekeeperDaemon(daemon.DaemonContext):
             working_directory = self.directory,
             pidfile = daemon.pidlockfile.PIDLockFile(self.pidfile),
             detach_process = True,
-            stdout = sys.stdout,
-            stderr = sys.stderr,
         )
 
         self.signal_map = {
