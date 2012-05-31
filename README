@@ -1,0 +1,5 @@
+Housekeeper, simple agent for password caching
+==============================================
+
+This project contains an agent that can be run to cache password of other
+programs and a client library to use the agent.

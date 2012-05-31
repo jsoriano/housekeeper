@@ -1,4 +1,6 @@
 #!/usr/bin/python
+# Copyright (c) 2011 Tuenti Technologies
+# See LICENSE for details
 
 import os
 import socket
