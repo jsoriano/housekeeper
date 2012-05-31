@@ -3,3 +3,16 @@ Housekeeper, simple agent for password caching
 
 This project contains an agent that can be run to cache password of other
 programs and a client library to use the agent.
+
+It requires python-daemon to run.
+
+
+Features
+--------
+
+* Minimal dependencies, only python 2.X and python-daemon
+* Stores used passwords in memory, it doesn't use any keyring in filesystem
+* Can be reset with SIGUSR1 or replaced with -r
+* Stored keys have an expiration time, by default they expire in 10 minutes
+* Can generate environment configuration easily sourceable from shell scripts
+  or profile
