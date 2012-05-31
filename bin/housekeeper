@@ -132,7 +132,7 @@ class HousekeeperDaemon(daemon.DaemonContext):
                 self.daemon = True
 
             def run(self):
-                while not self.event.is_set():
+                while not self.event.isSet():
                     self.keyring.check_expiration()
                     self.event.wait(60)
 
