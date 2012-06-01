@@ -1,0 +1,11 @@
+housekeeper (1.0) unstable; urgency=low
+
+  * Version 1.0
+
+ -- Jaime Soriano <jsoriano@tuenti.com>  Fri, 01 Jun 2012 12:30:41 +0200
+
+housekeeper (0.1dev-1) unstable; urgency=low
+
+  * source package automatically created by stdeb 0.6.0
+
+ -- Jaime Soriano <jsoriano@tuenti.com>  Fri, 01 Jun 2012 12:05:23 +0200

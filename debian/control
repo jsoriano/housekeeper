@@ -1,0 +1,15 @@
+Source: housekeeper
+Maintainer: Jaime Soriano <jsoriano@tuenti.com>
+Section: python
+Priority: optional
+Build-Depends: python-setuptools (>= 0.6b3), debhelper (>= 7), python-support (>= 0.8.4)
+XS-Python-Version: >= 2.5
+Standards-Version: 3.8.4
+
+Package: python-housekeeper
+Architecture: all
+Depends: ${misc:Depends}, ${python:Depends}, python-daemon (>= 1.0)
+Provides: ${python:Provides}
+XB-Python-Version: >= 2.5
+Description: Credential caching daemon.
+ Credential caching daemon to be used along the python keyring. Perfect for mercurial HTTP temporal credential storage.
