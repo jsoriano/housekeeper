@@ -63,7 +63,10 @@ class HousekeeperKeyringBackend(KeyringBackend):
             return -1
 
     def get_password(self, service, username):
-        return self.client.get("%s@%s" % (username, service))
+        try:
+            return self.client.get("%s@%s" % (username, service))
+        except HousekeeperClientException:
+            return ''
 
     def set_password(self, service, username, password):
         self.client.set("%s@%s" % (username, service), password, self.timeout)
