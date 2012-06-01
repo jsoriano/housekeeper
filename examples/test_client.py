@@ -4,7 +4,7 @@
 
 import time
 
-from housekeeper.housekeeper import HousekeeperClient
+from housekeeper.client import HousekeeperClient
 
 c = HousekeeperClient()
 c.set('mercurial', 'fooobar')

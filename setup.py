@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '1.0'
+version = '1.1'
 
 setup(name='housekeeper',
       version=version,
@@ -17,9 +17,9 @@ Credential caching daemon to be used along the python keyring. Perfect for mercu
       packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
       include_package_data=True,
       zip_safe=False,
-      install_requires=['python-daemon>=1.0'],
+      install_requires=['python-daemon>=1.0', 'keyring>=0.2'],
       entry_points="""
 	[console_scripts]
-        housekeeper = housekeeper.keyring:main
+        housekeeper = housekeeper.housekeeper:main
       """,
       )
