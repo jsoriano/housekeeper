@@ -1,0 +1,9 @@
+setup.cfg
+setup.py
+housekeeper/__init__.py
+housekeeper.egg-info/PKG-INFO
+housekeeper.egg-info/SOURCES.txt
+housekeeper.egg-info/dependency_links.txt
+housekeeper.egg-info/entry_points.txt
+housekeeper.egg-info/not-zip-safe
+housekeeper.egg-info/top_level.txt
