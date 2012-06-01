@@ -8,8 +8,13 @@ import socket
 #TODO: Better exceptions
 class HousekeeperClientException(Exception): pass
 
+if os.environ.has_key('HOUSEKEEPER_SOCKET'):
+    default_socket = os.environ['HOUSEKEEPER_SOCKET']
+else:
+    default_socket = os.path.expanduser('~/.housekeeper/socket')
+
 class HousekeeperClient:
-    def __init__(self, socketfile=os.environ['HOUSEKEEPER_SOCKET']):
+    def __init__(self, socketfile=default_socket):
         self.socketfile = socketfile
 
     def __request(self, cmd):
