@@ -7,7 +7,10 @@ import os.path
 import signal
 import sys
 import daemon
-import daemon.pidlockfile
+try:
+    import daemon.pidlockfile as pidlockfile
+except:
+    import daemon.pidfile as pidlockfile
 import threading
 import time
 import socket
@@ -90,7 +93,7 @@ class HousekeeperDaemon(daemon.DaemonContext):
 
         super(HousekeeperDaemon, self).__init__(
             working_directory = self.directory,
-            pidfile = daemon.pidlockfile.PIDLockFile(self.pidfile),
+            pidfile = pidlockfile.PIDLockFile(self.pidfile),
             detach_process = True,
         )
 
@@ -203,7 +206,9 @@ class HousekeeperDaemon(daemon.DaemonContext):
             conn, addr = self.socket.accept()
             self.handle_connection(conn)
 
-if __name__ == "__main__":
+
+
+def main():
     from optparse import OptionParser
 
     parser = OptionParser()
@@ -234,3 +239,8 @@ if __name__ == "__main__":
         replace=options.replace,
     )
     daemon.main()
+
+
+if __name__ == "__main__":
+    main()
+
