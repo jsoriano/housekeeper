@@ -17,10 +17,9 @@ Credential caching daemon to be used along the python keyring. Perfect for mercu
       packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
       include_package_data=True,
       zip_safe=False,
-      install_requires=[
-          # -*- Extra requirements: -*-
-      ],
+      install_requires=['python-daemon>=1.0'],
       entry_points="""
-      # -*- Entry points: -*-
+	[console_scripts]
+        housekeeper = housekeeper.keyring:main
       """,
       )
