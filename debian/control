@@ -8,7 +8,7 @@ Standards-Version: 3.8.4
 
 Package: python-housekeeper
 Architecture: all
-Depends: ${misc:Depends}, ${python:Depends}, python-daemon (>= 1.0), python-keyring
+Depends: ${misc:Depends}, ${python:Depends}, python-daemon (>= 1.0), python-keyring, python-setuptools
 Provides: ${python:Provides}
 XB-Python-Version: >= 2.5
 Description: Credential caching daemon.
