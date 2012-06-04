@@ -1,3 +1,9 @@
+housekeeper (1.1-1) unstable; urgency=low
+
+  * python-setuptools added as dependency
+
+ -- JaimeSoriano <jsoriano@tuenti.com>  Mon, 04 Jun 2012 13:21:07 +0200
+
 housekeeper (1.1) unstable; urgency=low
 
   * Version 1.1
