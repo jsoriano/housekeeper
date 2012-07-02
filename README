@@ -86,8 +86,8 @@ examples/test_client.py, but basically:
   from housekeeper.client import HousekeeperClient
 
   client = HousekeeperClient()
-  client.set('mercurial', 'foobar')
-  print client.get('mercurial', timeout=3600)
+  client.set('mercurial', 'foobar', timeout=3600)
+  print client.get('mercurial')
 
 It also provides a backend for python keyring module, to use it:
 
