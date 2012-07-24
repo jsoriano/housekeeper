@@ -51,7 +51,7 @@ it when starting your shell session, e.g. adding this lines to your .profile:
   if [[ -e $HOME/.housekeeper/env ]]; then
       . $HOME/.housekeeper/env
   else
-      eval $(housekeeper --write-envfile --replace)
+      eval $(housekeeper --write-env-file --replace)
   fi
 
 By default it writes the env file and other runtime information, as the
