@@ -70,7 +70,7 @@ class HousekeeperKeyring:
         finally:
             self.keys_lock.release()
         return result
-       
+
 
 class HousekeeperDaemon(daemon.DaemonContext):
     def __init__(self, directory=os.path.expanduser('~/.housekeeper'), write_envfile=False, replace=True):

@@ -21,5 +21,6 @@ Credential caching daemon to be used along the python keyring. Perfect for mercu
       entry_points="""
 	[console_scripts]
         housekeeper = housekeeper.housekeeper:main
+        git-credential-housekeeper = housekeeper.githelper:main
       """,
       )
