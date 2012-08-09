@@ -1,3 +1,9 @@
+housekeeper (1.1-2) unstable; urgency=high
+
+  * Security update, only owner of the process can write pid and env files
+
+ -- Jaime Soriano <jsoriano@tuenti.com>  Thu, 09 Aug 2012 12:12:09 +0200
+
 housekeeper (1.1-1) unstable; urgency=low
 
   * python-setuptools added as dependency

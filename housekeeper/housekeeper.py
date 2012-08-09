@@ -184,6 +184,7 @@ class HousekeeperDaemon(daemon.DaemonContext):
 
     def main(self):
         self.open()
+        umask = os.umask(0022)
 
         self.checker = self.__check_expiration()
         self.checker.start()
@@ -197,9 +198,9 @@ class HousekeeperDaemon(daemon.DaemonContext):
             env.close()
 
         self.socket = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-        umask = os.umask(0077)
+        os.umask(0077)
         self.socket.bind(self.socketfile)
-        umask = os.umask(umask)
+        os.umask(umask)
         self.socket.listen(1)
 
         while True:
