@@ -32,7 +32,7 @@ class HousekeeperKeyring:
 
     def check_expiration(self, service=None):
         def check(key):
-            if key['expiration'] and key['expiration'] < time.time():
+            if key['timeout'] and key['expiration'] < time.time():
                 del self.keys[service]
 
         self.keys_lock.acquire()

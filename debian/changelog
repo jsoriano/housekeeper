@@ -1,3 +1,9 @@
+housekeeper (1.1-3) unstable; urgency=low
+
+  * Fixed infinite timeout for cache expiration
+
+ -- Jaime Soriano <jsoriano@tuenti.com>  Tue, 21 Aug 2012 20:37:33 +0200
+
 housekeeper (1.1-2) unstable; urgency=high
 
   * Security update, only owner of the process can write pid and env files
