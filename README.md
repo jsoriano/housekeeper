@@ -27,11 +27,11 @@ If you got housekeeper as a source package, you can build it as egg or deb.
 
 To build it as an egg, run:
 
-  python setup.py bdist_egg
+    python setup.py bdist_egg
 
 To build it as a debian package:
 
-  dpkg-buildpackage
+    dpkg-buildpackage
 
 
 Usage
@@ -48,11 +48,11 @@ environment configuration for your shell, so you can eval it, it also can
 write with -e a file that you can source. The recommended usage is to run
 it when starting your shell session, e.g. adding this lines to your .profile:
 
-  if [[ -e $HOME/.housekeeper/env ]]; then
-      . $HOME/.housekeeper/env
-  else
-      eval $(housekeeper --write-env-file --replace)
-  fi
+    if [[ -e $HOME/.housekeeper/env ]]; then
+        . $HOME/.housekeeper/env
+    else
+        eval $(housekeeper --write-env-file --replace)
+    fi
 
 By default it writes the env file and other runtime information, as the
 pidfile in $HOME/.housekeeper, but you can also use -d to specify another
@@ -65,9 +65,9 @@ Development
 housekeeper basically implements a two command protocol to store and retrieve
 keys from its internal cache in memory, the commands are:
 
-  SET <service> <password> [<timeout>]
+    SET <service> <password> [<timeout>]
 
-  GET <service>
+    GET <service>
 
 SET is used to store a <password> for a <service> and GET to retrieve it, you
 can specify a <timeout> in seconds when storing the password to make it expire
@@ -83,20 +83,20 @@ housekeeper also provides a client-side python API with two convenience methods
 mapped to those commands, you can find an example of the use of this API in
 examples/test_client.py, but basically:
 
-  from housekeeper.client import HousekeeperClient
+    from housekeeper.client import HousekeeperClient
 
-  client = HousekeeperClient()
-  client.set('mercurial', 'foobar', timeout=3600)
-  print client.get('mercurial')
+    client = HousekeeperClient()
+    client.set('mercurial', 'foobar', timeout=3600)
+    print client.get('mercurial')
 
 It also provides a backend for python keyring module, to use it:
 
-  import keyring
+    import keyring
 
-  from housekeeper.client import HousekeeperKeyringBackend
+    from housekeeper.client import HousekeeperKeyringBackend
 
-  housekeeper = HousekeeperKeyringBackend(timeout=3600)
-  keyring.set_keyring(housekeeper)
+    housekeeper = HousekeeperKeyringBackend(timeout=3600)
+    keyring.set_keyring(housekeeper)
 
 Timeout is always optional and it's always defaulted to 600 seconds, if you set
 it to 0, the key never expires.
