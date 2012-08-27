@@ -2,6 +2,7 @@
 # Copyright (c) 2011 Tuenti Technologies
 # See LICENSE for details
 
+import base64
 import os
 import os.path
 import socket
@@ -42,13 +43,19 @@ class HousekeeperClient:
                 raise HousekeeperClientException(response)
 
     def set(self, service, password, timeout=-1):
-        cmd = "SET %s %s" % (service, password)
+        cmd = "SET %s %s" % (service, base64.b64encode(password))
         if timeout >= 0:
             cmd += " %d" % timeout
         self.__request(cmd)
 
     def get(self, service):
-        return self.__request("GET %s" % service)
+        password = self.__request("GET %s" % service)
+        try:
+            return base64.b64decode(password)
+        except TypeError:
+            # Old running instances of housekeeper can have unencoded passwords
+            # TODO: Improve protocol for 2.0, and remove this
+            return password
 
 class HousekeeperKeyringBackend(KeyringBackend):
     def __init__(self, socketfile=default_socket, timeout=600):
