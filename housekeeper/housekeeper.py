@@ -100,7 +100,7 @@ class HousekeeperDaemon(daemon.DaemonContext):
         self.signal_map = {
             signal.SIGTERM: 'terminate',
             signal.SIGHUP: None,
-            signal.SIGUSR1: self.reset_keyring,
+            signal.SIGUSR1: lambda *args: self.reset_keyring(),
         }
 
     def __startup(self):
@@ -172,6 +172,8 @@ class HousekeeperDaemon(daemon.DaemonContext):
             socket_file.write('InvalidKeyException\r\nERROR\r\n')
         except InvalidCommandException:
             socket_file.write('InvalidCommandException\r\nERROR\r\n')
+        except ValueError:
+            socket_file.write('InvalidCommandException\r\nERROR\r\n')
         finally:
             conn.close()
 
@@ -204,9 +206,11 @@ class HousekeeperDaemon(daemon.DaemonContext):
         self.socket.listen(1)
 
         while True:
-            conn, addr = self.socket.accept()
-            self.handle_connection(conn)
-
+            try:
+                conn, addr = self.socket.accept()
+                self.handle_connection(conn)
+            except socket.error:
+                pass
 
 
 def main():
